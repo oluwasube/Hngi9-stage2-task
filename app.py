@@ -28,6 +28,7 @@ def post_computation():
             'operation_type': operation_type
         })
     
-app.run(host='0.0.0.0', port=81)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
