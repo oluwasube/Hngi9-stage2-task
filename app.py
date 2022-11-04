@@ -11,9 +11,9 @@ CORS(app, resources={r'/api/*':{'origins':'*'}})
 def post_computation():
       # Unpacking the data posted to the API
     request_json = request.get_json()
-    operation_type= request_json('operation_type')
-    x = request_json('x')
-    y = request_json('y')
+    operation_type= request_json.get('operation_type',None )
+    x = request_json.get('x',None)
+    y = request_json.get('y',None)
       
     result =0
     if operation_type == "minus" or operation_type == "substract" or operation_type == "substraction":
