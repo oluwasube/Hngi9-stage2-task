@@ -4,16 +4,21 @@ from flask_cors import CORS
 #configure the app
 app = Flask(__name__)
 
-CORS(app, resources={r'/api/*':{'origins':'*'}})
+CORS(app)
 
 
-@app.route('/compute', methods= ['POST'])
+@app.route('/')
+def home():
+    return "Computation"
+
+
+@app.route('/api/compute', methods= ['POST'])
 def post_computation():
       # Unpacking the data posted to the API
-    request_json = request.get_json()
-    operation_type= request_json.get('operation_type',None )
-    x = request_json.get('x',None)
-    y = request_json.get('y',None)
+    
+    operation_type= request.json['operation_type']
+    x =request.json['x']
+    y = request.json['y']
       
     result =0
     if operation_type == "minus" or operation_type == "substract" or operation_type == "substraction":
@@ -25,7 +30,7 @@ def post_computation():
     return jsonify({
             'slackUsername': 'oluwasube',
             'result': result,
-            'operation_type': operation_type
+            'tion_type': operation_typeopera
         })
     
 if __name__ == '__main__':
