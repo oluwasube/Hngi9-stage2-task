@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app, resources={r'/api/*':{'origins':'*'}})
 
 
-@app.route('/api/v1/compute', methods= ['POST'])
+@app.route('/compute', methods= ['POST'])
 def post_computation():
       # Unpacking the data posted to the API
     request_json = request.get_json()
